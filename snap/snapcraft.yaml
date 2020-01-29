@@ -1,0 +1,27 @@
+name: test-override
+base: core18
+version: '0.1'
+summary: Test override snapcraft commands
+description: boilerplate
+
+grade: devel # must be 'stable' to release into candidate/stable channels
+confinement: strict
+
+parts:
+  apart:
+    plugin: dump
+    source: apart
+    override-pull: |
+      echo "pull dir is: `pwd`"
+      echo "SNAPCRAFT_PROJECT_DIR is $SNAPCRAFT_PROJECT_DIR"
+      echo "SNAPCRAFT_PART_SRC is $SNAPCRAFT_PART_SRC"
+      echo "SNAPCRAFT_PART_BUILD is $SNAPCRAFT_PART_BUILD"
+      echo "SNAPCRAFT_PART_INSTALL is $SNAPCRAFT_PART_INSTALL"
+      echo "SNAPCRAFT_STAGE is $SNAPCRAFT_STAGE"
+      echo "SNAPCRAFT_PRIME is $SNAPCRAFT_PRIME"
+    override-build: |
+      echo "build dir is: `pwd`"
+    override-stage: |
+      echo "stage dir is: `pwd`"
+    override-prime: |
+      echo "prime dir is: `pwd`"
